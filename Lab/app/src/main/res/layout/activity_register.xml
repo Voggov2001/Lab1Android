@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_register_scene"
+    tools:context=".RegisterActivity">
+
+    <EditText
+        android:id="@+id/enter_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="111dp"
+        android:layout_marginEnd="153dp"
+        android:ems="10"
+        android:hint="Имя"
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/enter_password"
+        android:layout_width="227dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="167dp"
+        android:layout_marginEnd="153dp"
+        android:ems="10"
+        android:hint="Пароль"
+        android:inputType="textPassword"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="145dp"
+        android:text="Регистрация"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/removeAccount"
+        android:layout_width="137dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="229dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:onClick="removeAccount"
+        android:text="@string/delete"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/add_account"
+        android:layout_width="145dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="85dp"
+        android:onClick="addAccount"
+        android:text="@string/add"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/removeAccount"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="117dp"
+        android:text="Вернуться к авторизации"
+        android:onClick="backToAuthorization"/>
+
+</RelativeLayout>

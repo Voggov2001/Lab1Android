@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_password"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="82dp"
         android:backgroundTint="@android:color/holo_blue_light"
         android:onClick="login"
@@ -123,5 +123,16 @@
         android:layout_marginBottom="77dp"
         android:text="@string/current_language"
         android:onClick="changeLocale"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_login"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="26dp"
+        android:onClick="signUp"
+        android:text="Регистрация" />
 
 </RelativeLayout>
