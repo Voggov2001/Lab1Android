@@ -52,4 +52,23 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return false;
     }
+
+    public Boolean changePassword(String username, String password, String newPassword){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username", username);
+        contentValues.put("password", newPassword);
+        Cursor cursor = myDB.rawQuery("Select * from users where username = ? and password = ?", new String[] {username,password});
+        if(cursor.getCount()>0){
+            myDB.update("users", contentValues, "password = ?", new String[]{password});
+            myDB.close();
+            return true;
+        }
+        else {
+            myDB.close();
+            return false;
+        }
+
+    }
+
 }
