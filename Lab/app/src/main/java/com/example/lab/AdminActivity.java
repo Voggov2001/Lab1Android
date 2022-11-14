@@ -1,5 +1,7 @@
 package com.example.lab;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,12 +21,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class TableActivity extends AppCompatActivity {
+public class AdminActivity extends AppCompatActivity {
 
     ArrayList<String> entries = new ArrayList<String>();
     ArrayList<String> selectedEntries = new ArrayList<String>();
@@ -41,7 +41,7 @@ public class TableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //MainActivity mainActivity = new MainActivity();
         //mainActivity.restoreLocale();
-        setContentView(R.layout.activity_table);
+        setContentView(R.layout.activity_admin);
 
         dbHelper = new DBHelper(this);
 
@@ -49,10 +49,8 @@ public class TableActivity extends AppCompatActivity {
         Collections.addAll(entries);
 
         Log.i("AppLogger", "Переопределение onCreate у TableActivity");
-        accountName = getIntent().getExtras().getString("Lab3");
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
-        textView2.setText(accountName);
-        sharedPref = this.getSharedPreferences(accountName, Context.MODE_PRIVATE);
+        TextView textView3 = (TextView) findViewById(R.id.textView3);
+        textView3.setText(accountName);
 
         // получаем элемент ListView
         entriesList = findViewById(R.id.acc_table);
@@ -85,7 +83,6 @@ public class TableActivity extends AppCompatActivity {
 
     @Override
     protected void onStop(){
-        saveTable();
         super.onStop();
         Log.i("AppLogger", "Переопределение onStop у TableActivity");
     }
@@ -123,44 +120,25 @@ public class TableActivity extends AppCompatActivity {
         }
     }
     public void removeEntrie(View view){
-        // получаем и удаляем выделенные элементы
-
-        if(selectedEntries.size() == 0 && entries.size() != 0) {
-            int numOfLastEntrie = entries.size() - 1;
-            adapter.remove(entries.get(numOfLastEntrie));
-        }
-
-        for(int i=0; i < selectedEntries.size();i++){
-            adapter.remove(selectedEntries.get(i));
-        }
-        // снимаем все ранее установленные отметки
-        entriesList.clearChoices();
-        // очищаем массив выбраных объектов
-        selectedEntries.clear();
-
-        adapter.notifyDataSetChanged();
-    }
-
-    private void saveTable(){
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-        editor.putInt("table_size", entries.size());
-        for(int i=0;i < entries.size(); i++)
-        {
-            editor.remove("table_ent_" + i);
-            editor.putString("table_ent_" + i, entries.get(i));
-        }
-
-        editor.apply();
+        EditText entrieET = findViewById(R.id.adm_acc_entrie);
+        String login  = entrieET.getText().toString();
+        if(dbHelper.deleteUser(login))
+            Toast.makeText(this,
+                    "Пользователь " + login + " успешно удалён", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this,
+                    "Ошибка удаления", Toast.LENGTH_SHORT).show();
+        restoreTable();
     }
 
     private void restoreTable()
     {
+        ArrayList<String> list = dbHelper.getDateList();
+        adapter.clear();
         entries.clear();
-        int size = sharedPref.getInt("table_size", 0);
-        for(int i=0;i < size;i++)
+        for(int i=0; i < list.size(); i = i + 2)
         {
-            entries.add(sharedPref.getString("table_ent_" + i, null));
+            entries.add(list.get(i) + " " + list.get(i+1));
         }
 
     }

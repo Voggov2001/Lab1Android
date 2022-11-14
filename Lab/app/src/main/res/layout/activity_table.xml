@@ -28,7 +28,7 @@
         android:layout_marginEnd="40dp"
         android:onClick="addEntrie"
         android:text="@string/add"
-        app:layout_constraintBottom_toTopOf="@+id/entriesList"
+        app:layout_constraintBottom_toTopOf="@+id/acc_table"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/entrie"
         app:layout_constraintVertical_bias="0.413" />
@@ -59,7 +59,7 @@
         android:backgroundTint="@android:color/holo_red_dark"
         android:onClick="removeEntrie"
         android:text="@string/delete"
-        app:layout_constraintBottom_toTopOf="@+id/entriesList"
+        app:layout_constraintBottom_toTopOf="@+id/acc_table"
         app:layout_constraintEnd_toStartOf="@+id/addEntrie"
         app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ListView
-        android:id="@+id/entriesList"
+        android:id="@+id/acc_table"
         android:layout_width="312dp"
         android:layout_height="450dp"
         android:layout_marginTop="96dp"

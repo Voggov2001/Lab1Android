@@ -94,6 +94,11 @@ public class MainActivity extends Activity {
         String name = username.getText().toString();
         String pass = password.getText().toString();
 
+        if(name.equals("admin") && pass.equals("admin")){
+            Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+            startActivity(intent);
+        }
+
         if (dbHelper.checkUsernamePassword(name, pass)) {
             Toast.makeText(getApplicationContext(), "Вход выполнен!",Toast.LENGTH_SHORT).show();
 

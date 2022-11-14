@@ -1,11 +1,14 @@
 package com.example.lab;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBNAME = "Login.db";
@@ -69,6 +72,37 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
 
+    }
+
+    public ArrayList<String> getDateList(){
+
+        ArrayList<String> dateList = new ArrayList();
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor userCursor;
+        userCursor = myDB.rawQuery("select " + "*" + " from " + "users", null);//Получаем все данные из таблицы TABLE(users)
+
+        if (userCursor.moveToFirst()) {
+            while (!userCursor.isAfterLast()) {
+                @SuppressLint("Range") String username = userCursor.getString(userCursor.getColumnIndex("username"));
+                @SuppressLint("Range") String password = userCursor.getString(userCursor.getColumnIndex("password"));
+                dateList.add(username);
+                dateList.add(password);
+                // обрабатываем data
+
+                // двигаемся к следующему значению
+                userCursor.moveToNext();
+            }
+        }
+
+// не забывайте закрыть курсор
+        userCursor.close();
+        return dateList;
+    }
+
+    public boolean deleteUser(String login)
+    {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        return myDB.delete("users", "username = ?", new String[]{login}) > 0;
     }
 
 }
