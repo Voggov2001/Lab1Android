@@ -64,7 +64,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("password", newPassword);
         Cursor cursor = myDB.rawQuery("Select * from users where username = ? and password = ?", new String[] {username,password});
         count = cursor.getCount();
-        if(count > 0){
+        if(count == 1){
             myDB.update("users", contentValues, "username = ? and password = ?", new String[]{username, password});
             myDB.close();
             return true;
