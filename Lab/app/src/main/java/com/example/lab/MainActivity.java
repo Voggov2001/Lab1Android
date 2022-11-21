@@ -97,6 +97,7 @@ public class MainActivity extends Activity {
         if(name.equals("admin") && pass.equals("admin")){
             Intent intent = new Intent(MainActivity.this, AdminActivity.class);
             startActivity(intent);
+            return;
         }
 
         if (dbHelper.checkUsernamePassword(name, pass)) {

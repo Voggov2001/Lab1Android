@@ -57,13 +57,15 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Boolean changePassword(String username, String password, String newPassword){
+        int count;
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
         contentValues.put("password", newPassword);
         Cursor cursor = myDB.rawQuery("Select * from users where username = ? and password = ?", new String[] {username,password});
-        if(cursor.getCount()>0){
-            myDB.update("users", contentValues, "password = ?", new String[]{password});
+        count = cursor.getCount();
+        if(count > 0){
+            myDB.update("users", contentValues, "username = ? and password = ?", new String[]{username, password});
             myDB.close();
             return true;
         }
@@ -87,20 +89,15 @@ public class DBHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range") String password = userCursor.getString(userCursor.getColumnIndex("password"));
                 dateList.add(username);
                 dateList.add(password);
-                // обрабатываем data
-
-                // двигаемся к следующему значению
                 userCursor.moveToNext();
             }
         }
 
-// не забывайте закрыть курсор
         userCursor.close();
         return dateList;
     }
 
-    public boolean deleteUser(String login)
-    {
+    public boolean deleteUser(String login){
         SQLiteDatabase myDB = this.getWritableDatabase();
         return myDB.delete("users", "username = ?", new String[]{login}) > 0;
     }
