@@ -1,47 +1,45 @@
 package com.example.lab1;
 
-import static com.example.lab1.R.id.button2;
-
-import android.app.Activity;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
+import lombok.Getter;
+import lombok.Setter;
 
-
-public class HelloActivity extends Activity {
+@Getter
+@Setter
+public class HelloActivity extends AppCompatActivity implements View.OnClickListener {
     private static Integer counter = 0;
+    private static Button buttonStart;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helloact);
+        buttonStart = findViewById(R.id.buttonStart);
+        buttonStart.setOnClickListener(this);
 
-        Button button1 = findViewById(R.id.button1);
-        Button button2 = findViewById(R.id.button2);
-        TextView textView = findViewById(R.id.textCounter);
-        textView.setText(counter.toString());
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                button1.setText("Нажато");
-                button2.setText("Нажми");
-                counter++;
-                textView.setText(counter.toString());
-
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                button2.setText("Нажато");
-                button1.setText("Нажми");
-                counter++;
-                textView.setText(counter.toString());
-            }
-        });
     }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.buttonStart:
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+
+    }
+
 }
