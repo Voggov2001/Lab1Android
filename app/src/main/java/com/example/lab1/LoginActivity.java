@@ -2,6 +2,7 @@ package com.example.lab1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static Button button;
     private static EditText username;
     private static EditText password;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Bundle argumentsBundle = getIntent().getExtras();
+        String argument = argumentsBundle.get("msg").toString();
+        Log.i("Log:", argument);
+        Log.e("Error", argument);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

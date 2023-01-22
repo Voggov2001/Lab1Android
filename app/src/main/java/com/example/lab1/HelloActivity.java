@@ -34,6 +34,7 @@ public class HelloActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId()) {
             case R.id.buttonStart:
                 Intent intent = new Intent(this, LoginActivity.class);
+                intent.putExtra("msg", "This LoginActivity!");
                 startActivity(intent);
                 break;
             default:
