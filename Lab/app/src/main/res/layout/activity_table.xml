@@ -11,8 +11,8 @@
         android:layout_width="358dp"
         android:layout_height="48dp"
         android:layout_marginLeft="36dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="24dp"
         android:layout_toStartOf="@+id/addEntrie"
         android:hint="@string/insert_text"
         android:textColorHint="#757575"
@@ -25,13 +25,13 @@
         android:id="@+id/addEntrie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="100dp"
         android:onClick="addEntrie"
         android:text="@string/add"
         app:layout_constraintBottom_toTopOf="@+id/acc_table"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/entrie"
-        app:layout_constraintVertical_bias="0.413" />
+        app:layout_constraintVertical_bias="0.416" />
 
     <TextView
         android:id="@+id/textView2"
@@ -49,22 +49,22 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintVertical_bias="0.375" />
 
     <Button
         android:id="@+id/removeEntrie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"
-        android:backgroundTint="@android:color/holo_red_dark"
+        android:backgroundTint="@color/purple_200"
         android:onClick="removeEntrie"
         android:text="@string/delete"
         app:layout_constraintBottom_toTopOf="@+id/acc_table"
         app:layout_constraintEnd_toStartOf="@+id/addEntrie"
-        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/entrie"
-        app:layout_constraintVertical_bias="0.413" />
+        app:layout_constraintVertical_bias="0.416" />
 
     <TextView
         android:id="@+id/textView"
@@ -79,12 +79,12 @@
         app:layout_constraintBottom_toTopOf="@+id/entrie"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <ListView
         android:id="@+id/acc_table"
-        android:layout_width="312dp"
-        android:layout_height="450dp"
+        android:layout_width="352dp"
+        android:layout_height="476dp"
         android:layout_marginTop="96dp"
         android:choiceMode="multipleChoice"
         app:layout_constraintBottom_toBottomOf="parent"
