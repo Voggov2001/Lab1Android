@@ -34,7 +34,7 @@ public class AdminActivity extends AppCompatActivity {
     Button delAccount;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {//dsfsd
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         dbHelper = new DBHelper(this);
